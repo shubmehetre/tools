@@ -1,0 +1,17 @@
+#!/usr/bin/zsh
+
+# function added to my Arch bootstrap script for enabling autologin
+
+autologin() {
+	[ ! -d /etc/systemd/system/getty@tty1.service.d ] && filedir="/etc/systemd/system/getty@tty1.service.d/" && mkdir -p "$filedir";
+
+	cat > /etc/systemd/system/getty@tty1.service.d/override.conf <<- _EOF_
+	# overriding login
+	[Service]
+	ExecStart=
+	ExecStart=-/usr/bin/agetty --skip-login --login-options $name --noclear %I $TERM
+	_EOF_
+
+}
+
+autologin
