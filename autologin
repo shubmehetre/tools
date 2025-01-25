@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-# function added to my Arch bootstrap script for enabling autologin
+# Function added to my Arch bootstrap script for enabling autologin
 
 autologin() {
 	[ ! -d /etc/systemd/system/getty@tty1.service.d ] && filedir="/etc/systemd/system/getty@tty1.service.d/" && mkdir -p "$filedir";
